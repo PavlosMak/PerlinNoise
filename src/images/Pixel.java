@@ -1,3 +1,5 @@
+package images;
+
 public class Pixel {
 
     int red;
@@ -5,7 +7,7 @@ public class Pixel {
     int blue;
 
     /**
-     * Constructs a new Pixel object.
+     * Constructs a new images.Pixel object.
      * @param red The red value of the pixel.
      * @param green The green value of the pixel.
      * @param blue The blue value of the pixel.

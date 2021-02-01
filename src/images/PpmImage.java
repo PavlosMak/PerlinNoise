@@ -1,3 +1,8 @@
+package images;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * The image class is used to
  * store, manipulate and export images of the PPM format.
@@ -36,6 +41,41 @@ public class PpmImage {
         this.width = pixels[0].length;
     }
 
+    /**
+     * Write this image to a file.
+     * @param filename The filename to write.
+     * @throws IOException Iff an exception got encountered while writing the file.
+     */
+    public void writeToFile(String filename) throws IOException {
+        if (!filename.endsWith(".ppm")) {
+            filename += ".ppm";
+        }
+        FileWriter writer = new FileWriter(filename);
+        writer.write(this.toString());
+        writer.close();
+    }
+
+    /**
+     * Returns a String representation of the image according to the
+     * PPM format.
+     * @return A String representation of the image.
+     */
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append(getReadability()).append("\n")
+                .append(getWidth()).append(" ").append(getHeight()).append("\n")
+                .append(maxColorValue).append("\n");
+        for(int i = 0; i < getHeight(); i++) {
+            for(Pixel pixel : pixels[i]) {
+                result.append(pixel.toString()).append(" ");
+            }
+            result.append("\n");
+        }
+        return result.toString();
+    }
+
+
+    //Getters and setters.
 
     public int getWidth() {
         return width;
@@ -61,6 +101,7 @@ public class PpmImage {
         return readability;
     }
 
+
     public void setReadability(String readability) throws IllegalArgumentException {
         if(!(readability.equals("P6") || readability.equals("P3"))) {
             throw new IllegalArgumentException("Readability can be either P6 (binary) or P3 (human readable)");
@@ -78,24 +119,4 @@ public class PpmImage {
         }
         this.maxColorValue = maxColorValue;
     }
-
-    /**
-     * Returns a String representation of the image according to the
-     * PPM format.
-     * @return A String representation of the image.
-     */
-    public String toString() {
-        String result = getReadability()+"\n"
-                +getWidth()+" "+getHeight()+"\n"
-                +maxColorValue+"\n";
-        for(int i = 0; i < getHeight(); i++) {
-            for(Pixel pixel : pixels[i]) {
-                result += pixel.toString() + " ";
-            }
-            result += "\n";
-        }
-        result = result.trim();
-        return result;
-    }
-
 }
