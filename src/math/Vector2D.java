@@ -2,8 +2,8 @@ package math;
 
 public class Vector2D implements Vector<Vector2D> {
 
-    double x;
-    double y;
+    private double x;
+    private double y;
 
     public Vector2D(double x, double y) {
         this.x = x;
@@ -16,6 +16,11 @@ public class Vector2D implements Vector<Vector2D> {
 
     public Vector2D displacementTo(Vector2D a) {
         return new Vector2D(a.getX() - this.getX(), a.getY() - this.getY());
+    }
+
+    public void add(Vector2D a) {
+        this.x = this.getX() + a.getX();
+        this.y = this.getY() + a.getY();
     }
 
     public double getX() {

@@ -17,13 +17,20 @@ class Vector2DTest {
     }
 
     @Test
-    void dot() {
+    void testDot() {
         assertEquals(10.0, vector.dot(secondVector));
     }
 
     @Test
-    void displacementTo() {
+    void testDisplacementTo() {
         Vector2D expected = new Vector2D(1.0, 2.0);
         assertEquals(expected, vector.displacementTo(secondVector));
+    }
+
+    @Test
+    void testAdd() {
+        Vector2D expected = new Vector2D(3.0, 6.0);
+        vector.add(secondVector);
+        assertEquals(expected, vector);
     }
 }

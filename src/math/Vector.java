@@ -16,4 +16,10 @@ public interface Vector<E extends Vector> {
      */
     public E displacementTo(E a);
 
+    /**
+     * Add vector a to this vector. Affects the original vector.
+     * @param a The vector to add to the current vector.
+     */
+    public void add(E a);
+
 }
