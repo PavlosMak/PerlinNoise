@@ -24,8 +24,9 @@ public class Vector2D implements Vector<Vector2D> {
     }
 
     public void normalize() {
-        this.x = this.getX() / getLength();
-        this.y = this.getY() / getLength();
+        double length = getLength();
+        this.x = this.getX() / length;
+        this.y = this.getY() / length;
     }
 
     public double getLength() {
@@ -58,4 +59,11 @@ public class Vector2D implements Vector<Vector2D> {
         return Double.compare(vector2D.x, x) == 0 && Double.compare(vector2D.y, y) == 0;
     }
 
+    @Override
+    public String toString() {
+        return "Vector2D{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
