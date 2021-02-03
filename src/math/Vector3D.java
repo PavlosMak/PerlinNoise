@@ -1,5 +1,7 @@
 package math;
 
+import java.util.Objects;
+
 public class Vector3D implements Vector<Vector3D> {
 
     private double x;
@@ -31,9 +33,10 @@ public class Vector3D implements Vector<Vector3D> {
     }
 
     public void normalize() {
-        this.x = this.x / getLength();
-        this.y = this.y / getLength();
-        this.z = this.z / getLength();
+        double length = getLength();
+        this.x = this.x / length;
+        this.y = this.y / length;
+        this.z = this.z / length;
     }
 
     public double getLength() {
@@ -62,5 +65,22 @@ public class Vector3D implements Vector<Vector3D> {
 
     public void setZ(double z) {
         this.z = z;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vector3D vector3D = (Vector3D) o;
+        return Double.compare(vector3D.x, x) == 0 && Double.compare(vector3D.y, y) == 0 && Double.compare(vector3D.z, z) == 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Vector3D{" +
+                "x=" + x +
+                ", y=" + y +
+                ", z=" + z +
+                '}';
     }
 }
