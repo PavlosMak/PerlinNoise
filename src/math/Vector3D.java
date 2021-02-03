@@ -1,7 +1,5 @@
 package math;
 
-import java.util.Objects;
-
 public class Vector3D implements Vector<Vector3D> {
 
     private double x;
