@@ -23,6 +23,15 @@ public class Vector2D implements Vector<Vector2D> {
         this.y = this.getY() + a.getY();
     }
 
+    public void normalize() {
+        this.x = this.getX() / getLength();
+        this.y = this.getY() / getLength();
+    }
+
+    public double getLength() {
+        return Math.sqrt(getX()*getX() + getY()*getY());
+    }
+
     public double getX() {
         return x;
     }
@@ -38,6 +47,7 @@ public class Vector2D implements Vector<Vector2D> {
     public void setY(double y) {
         this.y = y;
     }
+
 
 
     @Override

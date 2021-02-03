@@ -42,24 +42,15 @@ public class PerlinNoise {
      * @return A Vector2D object holding the gradient at that point.
      */
     private Vector2D getRandomGradientVector(Vector2D vector) {
-        double x = vector.getX()*this.xMultiplier;
-        double y = vector.getY()*this.yMultiplier;
-        return new Vector2D(Math.cos(x), Math.sin(y));
+//        double x = vector.getX()*this.xMultiplier;
+//        double y = vector.getY()*this.yMultiplier;
+//        return new Vector2D(Math.cos(x), Math.sin(y));
+        double random = 2920.0*Math.sin(vector.getX()*21942.0 + vector.getY() * 171324.0 + 8912.0) * Math.cos(vector.getX()*23157.0*vector.getY()*217832.0 + 9758.0);
+        Vector2D randVector = new Vector2D(Math.cos(random), Math.sin(random));
+        randVector.normalize();
+        return randVector;
     }
 
-    /**
-     * The smoothstep sigmoid interpolation function.
-     * @param x The input to the function.
-     * @return A double between 0.0 and 1.0.
-     */
-    private double smoothstep(double x) {
-        if (x <= 0) {
-            return 0.0;
-        } else if (x >= 1.0) {
-            return 0.1;
-        }
-        return x*x*(3.0 - 2.0*x);
-    }
 
     /**
      * Interpolate between start and end by weight using the smoothstep function.
@@ -68,9 +59,20 @@ public class PerlinNoise {
      * @param weight The weight of the interpolation.
      * @return An interpolated value between the 2 inputs.
      */
-    private double interpolate(double start, double end, double weight) {
-        return (end-start)*smoothstep(weight) + start;
+    private double lerp(double start, double end, double weight) {
+        //fade function as defined by Ken Perlin
+        return start*(1-smootherStep(weight)) + end * smootherStep(weight);
     }
+
+    private double smootherStep(double x) {
+        if (x <= 0) {
+            return 0.0;
+        } else if (x >= 1) {
+            return 1.0;
+        }
+        return  x*x*x*(6*x*x - 15*x + 10);
+    }
+
 
     /**
      * Return the Perlin Noise value at the given point.
@@ -112,10 +114,10 @@ public class PerlinNoise {
         double interpolationWeightInX = point.getX() - gridXLower;
         double interpolationWeightInY = point.getY() - gridYLower;
 
-        double horizontalInterpolation = interpolate(dotSouthWest, dotSouthEast, interpolationWeightInX);
-        double verticalInterpolation = interpolate(dotNorthWest, dotNorthEast, interpolationWeightInY);
+        double horizontalInterpolation = lerp(dotSouthWest, dotSouthEast, interpolationWeightInX);
+        double verticalInterpolation = lerp(dotNorthWest, dotNorthEast, interpolationWeightInY);
 
-        double interpolation2D = interpolate(horizontalInterpolation, verticalInterpolation, interpolationWeightInY);
+        double interpolation2D = lerp(horizontalInterpolation, verticalInterpolation, interpolationWeightInY);
 
         return interpolation2D;
     }

@@ -22,4 +22,15 @@ public interface Vector<E extends Vector> {
      */
     public void add(E a);
 
+    /**
+     * Normalize the vector.
+     */
+    public void normalize();
+
+    /**
+     * Gets the length of the vector.
+     * @return A double holding the length of the vector.
+     */
+    public double getLength();
+
 }
