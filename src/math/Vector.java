@@ -1,5 +1,10 @@
 package math;
 
+/**
+ * An interface that defines the basic operations
+ * for any vector object.
+ * @param <E> A Vector class (e.g Vector2D)
+ */
 public interface Vector<E extends Vector> {
 
     /**

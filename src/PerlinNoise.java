@@ -3,17 +3,10 @@ import math.Vector3D;
 
 import java.util.Random;
 
+/**
+ * The main class responsible for generating Perlin Noise.
+ */
 public class PerlinNoise {
-    /**
-     * The algorithm
-     * 1) Create n-dimensional grid (cell) with random vectors
-     * 2) For every point:
-     *      find the cell (2^n) corners where the point belongs
-     *      for each corner:
-     *          find displacement vector from point to corner
-     *          take dot product of corners gradient (random) vector with displacement vector
-     *      interpolate the dot products
-     */
 
     //this will store our random gradients.
     Vector3D[] gradients = new Vector3D[256];
@@ -77,6 +70,11 @@ public class PerlinNoise {
         }
     }
 
+    /**
+     * Pick a random, normalized gradient vector from a uniform distribution.
+     * @param random The random object to be used for random number generation.
+     * @return A normalized 3D vector.
+     */
     private Vector3D getRandomNormalizedVector3D(Random random) {
         //the 2*random - 1 maps the random value from [0,1] to [-1,1]
         double theta = Math.acos(2.0*random.nextDouble() - 1);
@@ -104,6 +102,11 @@ public class PerlinNoise {
         return start*(1-smootherStep(weight)) + end * smootherStep(weight);
     }
 
+    /**
+     * The smootherstep function to be used for a smoother interpolation.
+     * @param x The input of the function.
+     * @return A double corresponding to the value of the function at x.
+     */
     private double smootherStep(double x) {
         if (x <= 0) {
             return 0.0;
@@ -113,7 +116,13 @@ public class PerlinNoise {
         return  x*x*x*(6*x*x - 15*x + 10);
     }
 
-
+    /**
+     * Get the index of the gradient corresponding to the given cell corner.
+     * @param x The x coordinate of the cell corner.
+     * @param y The y coordinate of the cell corner.
+     * @param z The z coordinate of the cell corner.
+     * @return An integer corresponding to an index in the gradients array.
+     */
     private int hash(int x, int y, int z) {
         return permutations[permutations[permutations[x] + y] + z];
     }

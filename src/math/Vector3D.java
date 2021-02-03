@@ -1,5 +1,9 @@
 package math;
 
+/**
+ * A class representing a 3D Vector to be used
+ * for various mathematics operations.
+ */
 public class Vector3D implements Vector<Vector3D> {
 
     private double x;

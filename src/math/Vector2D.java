@@ -1,5 +1,9 @@
 package math;
 
+/**
+ *  A class representing a 2D Vector to be used
+ *  for various mathematics operations.
+ */
 public class Vector2D implements Vector<Vector2D> {
 
     private double x;

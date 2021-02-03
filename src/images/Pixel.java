@@ -1,5 +1,9 @@
 package images;
 
+/**
+ * A class representing a Pixel
+ * to be used to create images.
+ */
 public class Pixel {
 
     int red;
