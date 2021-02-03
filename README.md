@@ -19,10 +19,10 @@ In any case thank you for checking out this short project :).
 ## References
 
 ### Websites/Posts
-* The (excellent) Scratch a Pixel Blog posts about [noise](https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/procedural-patterns-noise-part-1),in general, and [Perlin Noise](https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise-part-2) specifically.
+* The (excellent) Scratch a Pixel Blog posts about [noise](https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/procedural-patterns-noise-part-1), in general, and [Perlin Noise](https://www.scratchapixel.com/lessons/procedural-generation-virtual-worlds/perlin-noise-part-2) specifically.
 * [Understanding Perlin Noise](https://adrianb.io/2014/08/09/perlinnoise.html) by adrian's soapbox.
 * [The Wikipedia page](https://en.wikipedia.org/wiki/Perlin_noise) on Perlin noise.
 
 ### Videos
-* The [One Lone Coder](https://www.youtube.com/watch?v=6-0UaeJBumA&t=1208s) video on Perlin-like noise.
+* The [One Lone Coder](https://www.youtube.com/watch?v=6-0UaeJBumA&t=1208s) video on "Perlin-Like" noise.
 * The [Coding Train](https://www.youtube.com/watch?v=Qf4dIN99e2w) series on Perlin Noise.
