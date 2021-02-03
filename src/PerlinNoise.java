@@ -73,15 +73,22 @@ public class PerlinNoise {
      */
     private void initialiseGradients(Random random) {
         for(int i = 0; i < gradients.length; i++) {
-            //the 2*random - 1 maps the random value from [0,1] to [-1,1]
-            Vector3D vector = new Vector3D(
-                    2 * random.nextDouble() - 1,
-                    2 * random.nextDouble() - 1,
-                    2 * random.nextDouble() - 1
-            );
-            vector.normalize();
-            gradients[i] = vector;
+            gradients[i] = getRandomNormalizedVector3D(random);
         }
+    }
+
+    private Vector3D getRandomNormalizedVector3D(Random random) {
+        //the 2*random - 1 maps the random value from [0,1] to [-1,1]
+        double theta = Math.acos(2.0*random.nextDouble() - 1);
+        double phi = 2.0 * random.nextDouble() * Math.PI;
+
+        double x = Math.cos(phi) * Math.sin(theta);
+        double y = Math.sin(phi) * Math.sin(theta);
+        double z = Math.cos(theta);
+
+        Vector3D vector3D = new Vector3D(x,y,z);
+        vector3D.normalize();
+        return vector3D;
     }
 
 
